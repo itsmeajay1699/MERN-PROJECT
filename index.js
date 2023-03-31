@@ -25,7 +25,7 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use("/", productRouter.Router);
+server.use("/products", productRouter.Router);
 
 server.use(express.static("build"));
 server.use("*", (req, res) => {
