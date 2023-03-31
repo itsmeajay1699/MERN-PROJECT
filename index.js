@@ -18,7 +18,7 @@ async function main() {
 }
 // cors origin to communicate with frontend and backend server
 
-server.use(cors());
+server.use(cors({ origin: "*" }));
 server.use(express.json());
 server.use((req, res, next) => {
   console.log("hello from middleware");
@@ -28,9 +28,11 @@ server.use((req, res, next) => {
 server.use("/products", productRouter.Router);
 
 server.use(express.static("build"));
+
 server.use("*", (req, res) => {
   res.sendFile(__dirname + "/build/index.html");
 });
+
 server.listen(process.env.PORT, () => {
   console.log("Server is started");
 });
