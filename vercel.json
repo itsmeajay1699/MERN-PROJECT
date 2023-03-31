@@ -23,6 +23,10 @@
       "dest": "build/index.html"
     },
     {
+      "src": "/form",
+      "dest": "build/index.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/build/$1"
     }
