@@ -1,6 +1,8 @@
 // express
 const express = require("express");
-const productRouter = require("./routes/product"); 
+//  export dot envconfig
+require("dotenv").config();
+const productRouter = require("./routes/product");
 const server = express();
 const cors = require("cors");
 
@@ -23,12 +25,12 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use("/", productRouter.Router); 
+server.use("/", productRouter.Router);
 
 server.use(express.static("build"));
 server.use("*", (req, res) => {
   res.sendFile(__dirname + "/build/index.html");
 });
-server.listen(8080, () => {
+server.listen(process.env.PORT, () => {
   console.log("Server is started");
 });
