@@ -25,16 +25,21 @@ exports.createUser = (req, res) => {
 // create the products
 
 exports.createProduct = (req, res) => {
-  const product = req.body;
-  const item = new Product(product);
-  item.save();
-  res.send(product);
+  try {
+    const product = req.body;
+    const item = new Product(product);
+    item.save();
+    res.send(product);
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
 };
 
 exports.getProducts = async (req, res) => {
   try {
     const products = await Product.find().exec();
-    return res.json(products)
+    return res.json(products);
   } catch (err) {
     console.log(err);
     return res.json(err);
