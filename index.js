@@ -10,7 +10,7 @@ main().catch((err) => console.log(err));
 
 async function main() {
   await mongoose.connect(
-    "mongodb+srv://ajay:DM3DS76tzk3Xuzs@ajay.mmihhda.mongodb.net/ecommerceDatabase?retryWrites=true&w=majority"
+    "mongodb+srv://ajay:asklqwopn@ajay.mmihhda.mongodb.net/ecommerceDatabase?retryWrites=true&w=majority"
   );
   console.log("Database is connected");
 }
