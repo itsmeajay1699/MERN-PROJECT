@@ -32,8 +32,13 @@ exports.createProduct = (req, res) => {
 };
 
 exports.getProducts = async (req, res) => {
-  const products = await Product.find().exec();
-  res.json(products);
+  try {
+    const products = await Product.find().exec();
+    return res.json(products)
+  } catch (err) {
+    console.log(err);
+    return res.json(err);
+  }
 };
 
 exports.getProduct = async (req, res) => {
@@ -64,5 +69,4 @@ exports.deleteProduct = async (req, res) => {
   const id = req.params.id;
   const product = await Product.findByIdAndDelete(id);
   res.json(product);
-}; 
- 
+};
